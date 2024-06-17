@@ -1,0 +1,123 @@
+.container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  width: 480px;
+  height: 459px;
+  border-radius: 12px;
+  background: #c2f5ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: #004980;
+  text-align: center;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: StratosSkyeng;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px;
+}
+
+.checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.checkbox + label {
+  padding-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  font-family: StratosSkyeng;
+  color: #004980;
+}
+
+.checkbox:not(:disabled):not(:checked)+label:hover::before {
+  border-color: #b3d7ff;
+}
+
+.checkbox:not(:disabled):active+label::before {
+  background-color: #b3d7ff;
+  border-color: #b3d7ff;
+}
+
+.checkbox:focus:not(:checked)+label::before {
+  border-color: #80bdff;
+}
+
+.checkbox:checked+label::before {
+  border-color: #0b76ef;
+  background-color: #0b76ef;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+}
+
+.checkbox:disabled+label::before {
+  background-color: #e9ecef;
+}
+
+.checkbox + label::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #adb5bd;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+.levels {
+  display: flex;
+  flex-direction: row;
+  gap: 26px;
+  margin-top: 48px;
+  margin-bottom: 28px;
+}
+
+.level {
+  display: flex;
+  width: 97px;
+  height: 98px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+
+  border-radius: 12px;
+  background: #fff;
+}
+
+.levelLink {
+  color: #0080c1;
+  text-align: center;
+  font-family: StratosSkyeng;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 72px;
+  text-decoration: none;
+}
+
+.levelLink:visited {
+  color: #0080c1;
+}
+
+.leaderboard {
+  font-family: StratosSkyeng;
+  color: #0080c1;
+  font-size: 24px;
+}

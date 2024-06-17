@@ -1,0 +1,73 @@
+.modal {
+  width: 480px;
+  padding-top: 36px;
+  padding-bottom: 48px;
+  border-radius: 12px;
+  background: #c2f5ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 8px;
+}
+
+.title {
+  color: #004980;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: StratosSkyeng;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px;
+  text-align: center;
+
+  margin-bottom: 28px;
+}
+
+.description {
+  color: #000;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: StratosSkyeng;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+
+  margin-bottom: 10px;
+}
+
+.time {
+  color: #000;
+  font-family: StratosSkyeng;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 72px;
+
+  margin-bottom: 40px;
+}
+
+.leaderboard {
+  margin-top: 20px;
+  font-family: StratosSkyeng;
+  color: #0080c1;
+  font-size: 16px;
+}
+
+.inputLeaderName {
+  width: 276px;
+  height: 45px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  text-align: center;
+  font-family: StratosSkyeng;
+  font-weight: 400;
+  font-size: 24px;
+  color: #999999;
+}
