@@ -1,4 +1,4 @@
-const hostUrl = "https://wedev-api.sky.pro/api/leaderboard";
+const hostUrl = "https://wedev-api.sky.pro/api/v2/leaderboard";
 
 export async function getLeaderboard() {
   const response = await fetch(hostUrl);
@@ -16,6 +16,7 @@ export async function addLeader(leader) {
     body: JSON.stringify({
       name: leader.name || "Пользователь",
       time: leader.time,
+      achievements: leader.achievements,
     }),
   });
 
