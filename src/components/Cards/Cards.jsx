@@ -6,6 +6,7 @@ import { EndGameModal } from "../../components/EndGameModal/EndGameModal";
 import { Button } from "../../components/Button/Button";
 import { Card } from "../../components/Card/Card";
 import { useCheckbox } from "../../pages/SelectLevelPage/CheckboxContext";
+import superAlohomora from "./superAlohomora.png";
 
 // Игра закончилась
 const STATUS_LOST = "STATUS_LOST";
@@ -42,6 +43,7 @@ function getTimerValue(startDate, endDate) {
  * previewSeconds - сколько секунд пользователь будет видеть все карты открытыми до начала игры
  */
 export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
+  const [achievements, setAchievements] = useState([1, 2]);
   // В cards лежит игровое поле - массив карт и их состояние открыта\закрыта
   const [cards, setCards] = useState([]);
   // Текущий статус игры
@@ -89,6 +91,24 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
   const [mistakesCount, setMistakesCount] = useState(0);
 
   const { isEasyMode } = useCheckbox();
+
+  function alohomora() {
+    if (!achievements.includes(2)) {
+      alert("Подсказкой можно воспользоваться только 1 раз");
+      return;
+    }
+    let closedCards = cards.filter(card => !card.open);
+    closedCards = shuffle(closedCards);
+    closedCards[0].open = true;
+    closedCards.forEach(card => {
+      if (card.suit === closedCards[0].suit && card.rank === closedCards[0].rank) {
+        card.open = true;
+        if (closedCards.some(el => el.open === false)) finishGame(STATUS_WON);
+        return closedCards;
+      }
+    });
+    setAchievements(prev => prev.filter(item => item !== 2));
+  }
 
   const openCard = clickedCard => {
     // Если карта уже открыта, то ничего не делаем
@@ -195,7 +215,12 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
       clearTimeout(timerId);
     };
   }, [status, pairsCount, previewSeconds]);
-
+  // на легком режиме очивка 1 не выпадает
+  useEffect(() => {
+    if (isEasyMode) {
+      setAchievements(prev => prev.filter(item => item !== 1));
+    }
+  }, [isEasyMode]);
   // Обновляем значение таймера в интервале
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -231,7 +256,11 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
         </div>
 
         {isEasyMode && <div className={styles.mistakesCount}>Осталось ошибок: {3 - mistakesCount}</div>}
-
+        {status === STATUS_IN_PROGRESS ? (
+          <div className={styles.imgSuper}>
+            <img onClick={alohomora} src={superAlohomora} alt="super" />
+          </div>
+        ) : null}
         {status === STATUS_IN_PROGRESS ? <Button onClick={resetGame}>Начать заново</Button> : null}
       </div>
 
@@ -255,6 +284,7 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
             gameDurationMinutes={timer.minutes}
             onClick={resetGame}
             cards={cards}
+            achievements={achievements}
           />
         </div>
       ) : null}

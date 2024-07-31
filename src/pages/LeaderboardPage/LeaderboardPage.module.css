@@ -95,3 +95,9 @@
   font-family: StratosSkyeng;
   font-size: 24px;
 }
+
+.grid {
+  width: 300px;
+  display: flex;
+  justify-content: space-evenly;
+}

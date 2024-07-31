@@ -1,14 +1,12 @@
 import styles from "./EndGameModal.module.css";
-
 import { Button } from "../Button/Button";
-
 import deadImageUrl from "./images/dead.png";
 import celebrationImageUrl from "./images/celebration.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { addLeader } from "../../api";
 
-export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, onClick, cards }) {
+export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, onClick, cards, achievements }) {
   const title = isWon ? "Вы победили!" : "Вы проиграли!";
 
   const imgSrc = isWon ? celebrationImageUrl : deadImageUrl;
@@ -25,6 +23,7 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
     const leader = {
       name: username,
       time: gameDurationMinutes * 60 + gameDurationSeconds,
+      achievements,
     };
 
     try {

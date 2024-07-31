@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-const CheckboxContext = createContext();
+const CheckboxContext = createContext(null);
 
 export const useCheckbox = () => {
   return useContext(CheckboxContext);
