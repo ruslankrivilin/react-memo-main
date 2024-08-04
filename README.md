@@ -8,6 +8,7 @@ https://skypro-web-developer.github.io/react-memo/
 ## Разработка
 
 Проект реализован на основе шаблона [Create React App](https://github.com/facebook/create-react-app).
+Ожидаемое время выполнения курсовой - 8 часов // фактическое время выполнения - 32 часа.
 
 ### Как разрабатывать
 
