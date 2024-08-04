@@ -103,7 +103,7 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
     closedCards.forEach(card => {
       if (card.suit === closedCards[0].suit && card.rank === closedCards[0].rank) {
         card.open = true;
-        if (closedCards.some(el => el.open === false)) finishGame(STATUS_WON);
+        if (!closedCards.some(el => el.open === false)) finishGame(STATUS_WON);
         return closedCards;
       }
     });
